@@ -29,7 +29,9 @@ module.exports = {
       // imported in to modules in other services using [name as defined in host]/[exposes key]
       // e.g. import 'products/ProductsIndex'
       exposes: {
-        './ProductsIndex': './src/index',
+        // Now that we're using the bootstrap / index setup and bootstrap is exporting a mount function, we no longer
+        // want to expose index. Index will only be used by the service when it's run in isolation.
+        './ProductsIndex': './src/bootstrap',
       },
 
       // Shared are packages which maight be being used in multiple micro front ends. This makes sure the
