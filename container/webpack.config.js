@@ -11,9 +11,13 @@ module.exports = {
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
+      // Don't actually need to provide a name for hosts, only remotes but adding
+      // here for clarity.
       name: 'container',
-      // where to find the remote entry point on the different fe services
+      // List different micro-FEs that the container can search to find modules
       remotes: {
+        // The key specifies the name we import modules from e.g. [key]/ProductsIndex products/ProductsIndex
+        // products@http://localhost:8081/remoteEntry.js = ["name" of remote]@[url to remote entry file]
         products: 'products@http://localhost:8081/remoteEntry.js',
       },
     }),

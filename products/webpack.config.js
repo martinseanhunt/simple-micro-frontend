@@ -24,8 +24,9 @@ module.exports = {
       // resources from this fe service.
       filename: 'remoteEntry.js',
 
-      // telling the plugin which modules are to be exposed and the name on which to expose them. These can then be
-      // imported in to modules in other services using [name]/[exposes.key] e.g. import 'products/ProductsIndex'
+      // telling the plugin which modules are to be exposed and the path on which to expose them. These can then be
+      // imported in to modules in other services using [name as defined in host]/[exposes key]
+      // e.g. import 'products/ProductsIndex'
       exposes: {
         './ProductsIndex': './src/index',
       },
