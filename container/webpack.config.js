@@ -19,6 +19,7 @@ module.exports = {
         // The key specifies the name we import modules from e.g. [key]/ProductsIndex products/ProductsIndex
         // products@http://localhost:8081/remoteEntry.js = ["name" of remote]@[url to remote entry file]
         products: 'products@http://localhost:8081/remoteEntry.js',
+        cart: 'cart@http://localhost:8082/remoteEntry.js',
       },
     }),
   ],

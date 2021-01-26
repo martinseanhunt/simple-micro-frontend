@@ -19,8 +19,9 @@ module.exports = {
       // to dist/main.js). remoteEnty is emitting a second set of files from webpack which are exposed to other
       // micro front ends.
 
-      // remoteEntry is kind of a manifest containing all the differnet files and dependencies that this micro front end
-      // is exposing vua the module federation plugin. Tells other fe services (i.e. our container) how to load
+      // filename is the file name of a manifest that the plugin will create which contains all the differnet files
+      // and dependencies that this micro front end is exposing via the module federation plugin.
+      // Tells other fe services (i.e. our container) how to load
       // resources from this fe service.
       filename: 'remoteEntry.js',
 
