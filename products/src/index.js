@@ -1,10 +1,3 @@
-import faker from 'faker'
-
-let products = ''
-
-for (let i = 0; i < 3; i++) {
-  const name = faker.commerce.productName()
-  products += `<div>${name}</div>`
-}
-
-document.querySelector('#dev-products').innerHTML = products
+// invoking import as a funciton so that dependencies will be laoded before the code is run.
+// see comments in bootstrap and webpack.config
+import('./bootstrap')

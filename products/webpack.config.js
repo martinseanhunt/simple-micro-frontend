@@ -31,6 +31,15 @@ module.exports = {
       exposes: {
         './ProductsIndex': './src/index',
       },
+
+      // Shared are packages which maight be being used in multiple micro front ends. This makes sure the
+      // package only needs to be loaded once by a host if multiple FE's use the package.
+
+      // IMPORTANT NOTE: Marking a package as shared here causes it to be loaded asyncronously by this
+      // fe-service so we get an error message if we try to run the development version of this service
+      // in isolation (It works fine when being loaded by the container becuase the remoteEntry file handles
+      // this automagically.)
+      shared: ['faker'],
     }),
   ],
 }
