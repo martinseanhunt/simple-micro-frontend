@@ -13,6 +13,11 @@ module.exports = {
     }),
     // Using to connect micro front ends
     new ModuleFederationPlugin({
+      // The name of our micro front end
+      // NOTE: There's a weird bug whith the federatin plugin where we can't use the name we set here as
+      // an id of a div... i.e. <div id="porducts" /> and try to select it with a querySelector.
+      // it creates a conflict between variable names in the global context because the browser creates a global var
+      // with the same name as the ID.... This plugin also creates a global variable with the name defined here.
       name: 'products',
       // The remote entry point to our micro front end. This is a sererate bundle to our
       // regular budle. They're both created so we can still run our micro front end in isolation (bundled in
