@@ -38,8 +38,28 @@ module.exports = {
       // IMPORTANT NOTE: Marking a package as shared here causes it to be loaded asyncronously by this
       // fe-service so we get an error message if we try to run the development version of this service
       // in isolation (It works fine when being loaded by the container becuase the remoteEntry file handles
-      // this automagically.)
+      // this automagically.).
+
+      // If the multiple FE's are using significantly different versions (as defined by whatever rules
+      // are set in package.json - ^ ~ etc) of the dependancy, the host will load both versios of the
+      // dependency to avoid unexpected issues if a particular FE requires a diferent version for a good reason.
+
+      // Can be a simple array
       shared: ['faker'],
+
+      // Some packages (notably react) do not allow for muliple copies of the package to be loaded in to the browser
+      // and will error. TO handle this we can explicitly tell module federation to only ever use a single verison
+      // of a package, even if multiple versions are requested by markign it as a singleton. In this case the newest
+      // requested version of a given package will be used by the container. A warning message will also be displayed
+      // in the console.
+
+      /* We would use this instead of the array structure above: 
+      shared: {
+        faker: {
+          singleton: true
+        }
+      }
+      */
     }),
   ],
 }
